@@ -4,7 +4,7 @@ Title: ShipStation API endpoints
 Version: 0.1.0
 Author: Ron Guymon <rnguymon@gmail.com>
 Maintainer: Ron Guymon <rnguymon@gmail.com>
-Description: Connects to ShipStation API using api credentials
+Description: Connects to ShipStation API using api credentials.
 License: None
 Encoding: UTF-8
 LazyData: true
@@ -13,3 +13,4 @@ Imports:
     , jsonlite (>= 1.5)
     , magrittr (>= 1.5)
     , dplyr (>= 0.7.4)
+RoxygenNote: 6.0.1

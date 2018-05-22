@@ -2,7 +2,7 @@
 #' @description Gets shipStation Orders
 #'
 #' Documentation: # https://www.shipstation.com/developer-api/#/reference/customers/list-customers/list-customers
-#' @param shopifyPath Something like: mywebsite.com
+#' @param shippyPath Something like: https://api.mywebsite.com/
 #' @param apiKey Unencoded api key
 #' @param apiPassword Unencoded apiPassword
 #' @param verbose Whether it will return the results of the api call. Defaults to T.
@@ -12,7 +12,7 @@
 #' @export
 #'
 getShippyOrders <- function(shippyPath, apiKey, apiSecret, verbose = T, page = NULL){
-  shippyApiKey <- paste0(apiKey,":",apiSecret) %>% base64_enc() %>%gsub("[\r\n]", "", .) %>% paste0("BASIC ", .)
+  shippyApiKey <- paste0(apiKey,":",apiSecret) %>% jsonlite::base64_enc() %>%gsub("[\r\n]", "", .) %>% paste0("BASIC ", .)
 
   if(is.null(page)){
     apicall <- paste0(shippyPath, "orders?pageSize=500")
@@ -39,7 +39,7 @@ getShippyOrders <- function(shippyPath, apiKey, apiSecret, verbose = T, page = N
   # Number of pages
   pages <- orders$pages
   # Parse the data and return a dataframe
-  orders <- content(rOrders, "parsed")
+  orders <- httr::content(rOrders, "parsed")
   odf <- data.frame()
   for(i in 1:length(orders)){
     temp <- orders[i][[1]] %>% .[which(!names(.) %in% c("items", "weight", "internationalOptions"))] %>% unlist() # Everything except items
