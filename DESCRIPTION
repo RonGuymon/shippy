@@ -1,11 +1,15 @@
 Package: shippy
 Type: Package
-Title: What the Package Does (Title Case)
+Title: ShipStation API endpoints
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Ron Guymon <rnguymon@gmail.com>
+Maintainer: Ron Guymon <rnguymon@gmail.com>
+Description: Connects to ShipStation API using api credentials
+License: None
 Encoding: UTF-8
 LazyData: true
+Imports:
+    httr (>= 1.3.1)
+    , jsonlite (>= 1.5)
+    , magrittr (>= 1.5)
+    , dplyr (>= 0.7.4)
