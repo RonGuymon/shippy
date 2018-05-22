@@ -36,10 +36,9 @@ getShippyOrders <- function(shippyPath, apiKey, apiSecret, verbose = T, page = N
     )
   }
 
-  # Number of pages
-  pages <- orders$pages
   # Parse the data and return a dataframe
-  orders <- httr::content(rOrders, "parsed")
+  orders <- httr::content(r, "parsed")
+  pages <- orders$pages
   odf <- data.frame()
   for(i in 1:length(orders)){
     temp <- orders[i][[1]] %>% .[which(!names(.) %in% c("items", "weight", "internationalOptions"))] %>% unlist() # Everything except items
